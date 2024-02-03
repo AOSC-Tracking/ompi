@@ -27,6 +27,12 @@
  * On powerpc ...
  */
 
+/* Hack on Debian. See: https://github.com/open-mpi/ompi/issues/2055
+ *   -- amck, 2016-09-05
+ */
+#undef OPAL_GCC_INLINE_ASSEMBLY
+#define OPAL_GCC_INLINE_ASSEMBLY 1
+
 #define MB()  __asm__ __volatile__ ("sync" : : : "memory")
 #define RMB() __asm__ __volatile__ ("isync" : : : "memory")
 #define WMB() __asm__ __volatile__ ("lwsync" : : : "memory")
